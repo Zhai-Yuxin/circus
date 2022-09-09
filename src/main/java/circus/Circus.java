@@ -1,6 +1,7 @@
 package circus;
 
 import circus.animal.*;
+import circus.stuff.Cage;
 import circus.stuff.Cannon;
 import circus.stuff.Equipment;
 import circus.stuff.Ladder;
@@ -40,7 +41,14 @@ public class Circus {
         return total;
     }
 
+    private static void printAllAnimals(ArrayList<Animal> animalArrayList) {
+        for (Animal a : animalArrayList) {
+            System.out.println(a);
+        }
+    }
+
     public static void main(String[] args) {
+
         System.out.println("number of animals in in the circus: " + animals.length);
 
         //makeAnimalsTalk();
@@ -61,12 +69,22 @@ public class Circus {
         animalArrayList.sort(Animal.AnimalNameComparator);
         printAllAnimals(animalArrayList);
         System.out.println("index of Lourie after sorting is: " + animalArrayList.indexOf(Lourie));
+        
 
-    }
+        Cage<Duck> duckCage = new Cage<>();
+        Duck duck = new Duck("Scrooge");
+        duckCage.lockUp(duck);
+        Parrot parrot = new Parrot("Popper");
+        Cage<Parrot> parrotCage = new Cage<>();
+        parrotCage.lockUp(parrot);
 
-    private static void printAllAnimals(ArrayList<Animal> animalArrayList) {
-        for (Animal animal: animalArrayList) {
-            System.out.println(animal);
+        ArrayList<Cage> cages = new ArrayList<>();
+        cages.add(duckCage);
+        cages.add(parrotCage);
+
+        for(Cage c: cages) {
+            c.release();
+
         }
     }
 }
