@@ -69,7 +69,7 @@ public class Circus {
         animalArrayList.sort(Animal.AnimalNameComparator);
         printAllAnimals(animalArrayList);
         System.out.println("index of Lourie after sorting is: " + animalArrayList.indexOf(Lourie));
-        
+
 
         Cage<Duck> duckCage = new Cage<>();
         Duck duck = new Duck("Scrooge");
